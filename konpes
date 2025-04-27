@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Confess Bucin Untuk Doi</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #ffccd5, #ffe6f0);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #d6336c;
+            font-size: 36px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            display: inline-block;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 400px;
+        }
+        input[type="file"], textarea, button {
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff85c1;
+        }
+        .gaara-img {
+            margin-top: 20px;
+            width: 150px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff69b4;
+        }
+        #preview {
+            margin-top: 15px;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <audio autoplay loop>
+        <source src="https://files.catbox.moe/5h3qzc.mp3" type="audio/mpeg">
+        Musik tidak didukung di browser kamu.
+    </audio>
+
+    <h1>Confess Bucin Untuk Doi</h1>
+    <img src="https://static.wikia.nocookie.net/naruto/images/5/5e/Gaara_New.png" alt="Gaara" class="gaara-img">
+
+    <form id="confessForm">
+        <textarea placeholder="Tulis perasaanmu di sini..." required></textarea><br>
+        <input type="file" id="imageUpload" accept="image/*" required><br>
+        <img id="preview" style="display:none;">
+        <button type="submit">Kirim dengan Cinta ❤️</button>
+    </form>
+
+    <p style="margin-top:30px; font-size:24px; color:#ff4081;">I Love You</p>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const preview = document.getElementById('preview');
+
+        imageUpload.addEventListener('change', function(){
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.setAttribute('src', e.target.result);
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        const form = document.getElementById('confessForm');
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert("Confess kamu sudah terkirim dengan cinta! ❤️");
+            form.reset();
+            preview.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
